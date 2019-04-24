@@ -2,6 +2,8 @@ import express from 'express'
 import morgan from 'morgan'
 import mongoose from 'mongoose'
 
+import userRoutes from './routes/users'
+
 const app = express();
 
 // Connect to database
@@ -27,9 +29,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', (req, res) => {
-    res.json({message: 'yolo'})
-});
+app.use('/users', userRoutes);
 
 // If request doesn't get handled by the routers above
 // throw error
