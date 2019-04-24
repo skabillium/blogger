@@ -6,6 +6,8 @@ import jwt from 'jsonwebtoken'
 
 import User from '../models/User'
 
+import checkAuth from '../middleware/check-auth'
+
 const router  = express.Router();
 
 router.post('/signup', async (req, res, next) => {
@@ -77,7 +79,7 @@ router.post('/login', async (req, res, next) => {
     });
 });
 
-router.delete('/:userId', (req, res, next) => {
+router.delete('/:userId', checkAuth, (req, res, next) => {
     User.remove({ _id: req.params.userId })
         .exec()
         .then(result => {
