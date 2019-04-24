@@ -1,0 +1,25 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "A blogging website created to get familiar with the mern stack",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "skabi",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.5.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.3",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.11"
+  }
+}
