@@ -40,7 +40,7 @@ export const update_post = (req, res, next) => {
     const id = req.params.post_id;
     let updateOpts = req.body;
 
-    Post.update({_id: id}, { $set: updateOpts})
+    Post.updateOne({_id: id}, { $set: updateOpts})
         .exec()
         .then(result => {
             res.status(200).json({ message: 'Post updated' });
