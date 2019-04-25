@@ -3,6 +3,7 @@ import morgan from 'morgan'
 import mongoose from 'mongoose'
 
 import userRoutes from './routes/users'
+import postRoutes from './routes/posts'
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/users', userRoutes);
+app.use('/posts', postRoutes);
 
 // If request doesn't get handled by the routers above
 // throw error
