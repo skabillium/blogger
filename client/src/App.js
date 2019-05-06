@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
+import Dashboard from "./components/dashboard/Dashboard";
+
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <h1>Hello</h1>
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+          </Switch>
         </div>
       </BrowserRouter>
     );
