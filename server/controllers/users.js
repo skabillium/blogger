@@ -5,7 +5,11 @@ import jwt from "jsonwebtoken";
 import User from "../models/User";
 
 export const signup = async (req, res, next) => {
-  const users = await User.find({ email: req.body.email }).exec();
+  try {
+    const users = await User.find({ email: req.body.email }).exec();
+  } catch (error) {
+    return res.status(500).json({ message: "db erro" });
+  }
 
   if (users.length >= 1) {
     return res.status(409).json({ message: "Mail exists" });

@@ -1,6 +1,6 @@
 {
     "env": {
-        "PORT": 3000,
+        "PORT": 5000,
         "ROOT_DIR": "~/Projects/ExpressJs/Blog",
         "DB_URL": "mongodb://localhost:27017/blog",
         "JWT_KEY": "secret"
