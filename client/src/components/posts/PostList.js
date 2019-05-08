@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import PostSummary from "./PostSummary";
 
@@ -18,7 +19,11 @@ class PostList extends Component {
 
         {this.state.posts &&
           this.state.posts.map(post => {
-            return <PostSummary post={post} key={post.id} />;
+            return (
+              <Link to={"/post/" + post.id}>
+                <PostSummary post={post} key={post.id} />
+              </Link>
+            );
           })}
       </div>
     );
