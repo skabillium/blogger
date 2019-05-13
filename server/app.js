@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import mongoose from "mongoose";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 import userRoutes from "./routes/users";
 import postRoutes from "./routes/posts";
@@ -19,6 +20,9 @@ mongoose.Promise = global.Promise;
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Use the cookie parser middleware
+app.use(cookieParser());
 
 // Grant ability to send requests to browsers outside of localhost
 app.use(cors());

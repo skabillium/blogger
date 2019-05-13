@@ -39,9 +39,7 @@ export const signup = async (req, res, next) => {
             newUser
               .save()
               .then(result => {
-                res
-                  .status(201)
-                  .json({ message: "User created", user: result, token });
+                res.cookie("token", token, { httpOnly: true }).sendStatus(200);
               })
               .catch(err => {
                 res.status(500).json(err);
@@ -84,11 +82,7 @@ export const login = async (req, res, next) => {
         { expiresIn: "1d" }
       );
 
-      return res.status(200).json({
-        message: "Auth succesful",
-        id: user._id,
-        token
-      });
+      return res.cookie("token", token, { httpOnly: true }).sendStatus(200);
     }
   });
 };
