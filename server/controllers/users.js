@@ -8,7 +8,7 @@ export const signup = async (req, res, next) => {
   try {
     const users = await User.find({ email: req.body.email }).exec();
   } catch (error) {
-    return res.status(500).json({ message: "db erro" });
+    return res.status(500).json({ message: "db error" });
   }
 
   if (users.length >= 1) {
@@ -83,6 +83,7 @@ export const login = async (req, res, next) => {
 
       return res.status(200).json({
         message: "Auth succesful",
+        id: user._id,
         token
       });
     }
