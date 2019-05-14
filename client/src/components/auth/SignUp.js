@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class SignUp extends Component {
@@ -14,6 +15,17 @@ export default class SignUp extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  // componentWillMount() {
+  //   axios
+  //     .get("/checkAuth")
+  //     .then(res => {
+  //       if (res.status === 200) {
+  //         this.props.history.push(`/dashboard/${res.data._id}`);
+  //       }
+  //     })
+  //     .catch();
+  // }
+
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value
@@ -26,7 +38,7 @@ export default class SignUp extends Component {
       .post("/users/signup", this.state)
       .then(res => {
         if (res.status === 201) {
-          this.props.history.push("/dashboard");
+          this.props.history.push(`/dashboard/${res.data._id}`);
         }
       })
       .catch(err => console.log("error"));
@@ -45,6 +57,7 @@ export default class SignUp extends Component {
           <input type="password" name="password" onChange={this.onChange} />
           <input type="submit" value="Submit" />
         </form>
+        <Link to={"/signin"}>Sign in</Link>
       </div>
     );
   }

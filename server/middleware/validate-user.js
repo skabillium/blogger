@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 export default (req, res, next) => {
-  const token = req.headers.authorization.split(" ")[1] || req.cookies.token;
+  const token = req.cookies.token;
   const decoded = jwt.decode(token);
   const id = req.body.user_id;
 

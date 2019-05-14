@@ -6,6 +6,7 @@ import PostDetails from "./components/posts/PostDetails";
 import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 
+import CheckAuth from "./components/auth/CheckAuth";
 import WithAuth from "./components/hoc/WithAuth";
 
 class App extends Component {
@@ -14,9 +15,10 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Switch>
-            <Route exact path="/" component={WithAuth(Dashboard)} />
-            <Route path="/signup" component={SignUp} />
+            <Route exact path="/" component={CheckAuth} />
+            <Route path="/dashboard" component={WithAuth(Dashboard)} />
             <Route path="/signin" component={SignIn} />
+            <Route path="/signup" component={SignUp} />
             <Route path="/post/:id" component={PostDetails} />
           </Switch>
         </div>

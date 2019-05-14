@@ -26,7 +26,7 @@ class SignIn extends Component {
       .post("/users/login", this.state)
       .then(res => {
         if (res.status === 200) {
-          this.props.history.push("/dashboard");
+          this.props.history.push(`/dashboard/${res.data._id}`);
         }
       })
       .catch(err => console.log("error"));
@@ -43,7 +43,7 @@ class SignIn extends Component {
           <input type="password" name="password" onChange={this.onChange} />
           <input type="submit" value="Submit" />
         </form>
-        <Link to={"/signup"}>Sign up</Link>
+        <Link to={"/"}>Sign up</Link>
       </div>
     );
   }
