@@ -23,8 +23,12 @@ class SignIn extends Component {
   onSubmit(e) {
     e.preventDefault();
     axios
-      .post("/users/login")
-      .then(res => console.log(res.status))
+      .post("/users/login", this.state)
+      .then(res => {
+        if (res.status === 200) {
+          this.props.history.push("/dashboard");
+        }
+      })
       .catch(err => console.log("error"));
   }
 

@@ -39,7 +39,7 @@ export const signup = async (req, res, next) => {
             newUser
               .save()
               .then(result => {
-                res.cookie("token", token, { httpOnly: true }).sendStatus(200);
+                res.cookie("token", token, { httpOnly: true }).sendStatus(201);
               })
               .catch(err => {
                 res.status(500).json(err);
@@ -56,35 +56,36 @@ export const signup = async (req, res, next) => {
 export const login = async (req, res, next) => {
   try {
     const user = await User.find({ username: req.body.username }).exec();
-  } catch (error) {
-    return res.status(500).json({ message: "db error" });
-  }
-  if (user.length < 1) {
-    return res.status(401).json({
-      message: "Auth failed1"
-    });
-  }
 
-  bcrypt.compare(req.body.password, user[0].password, (err, result) => {
-    if (err) {
+    if (user.length < 1) {
       return res.status(401).json({
-        message: "Auth failed2"
+        message: "Auth failed1"
       });
     }
 
-    if (result) {
-      const token = jwt.sign(
-        {
-          email: user[0].email,
-          userId: user[0]._id
-        },
-        process.env.JWT_KEY,
-        { expiresIn: "1d" }
-      );
+    bcrypt.compare(req.body.password, user[0].password, (err, result) => {
+      if (err) {
+        return res.status(401).json({
+          message: "Auth failed2"
+        });
+      }
 
-      return res.cookie("token", token, { httpOnly: true }).sendStatus(200);
-    }
-  });
+      if (result) {
+        const token = jwt.sign(
+          {
+            email: user[0].email,
+            userId: user[0]._id
+          },
+          process.env.JWT_KEY,
+          { expiresIn: "1d" }
+        );
+
+        return res.cookie("token", token, { httpOnly: true }).sendStatus(200);
+      }
+    });
+  } catch (error) {
+    return res.status(500).json({ message: "db error" });
+  }
 };
 
 export const _delete = (req, res, next) => {

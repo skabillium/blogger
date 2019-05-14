@@ -26,14 +26,7 @@ export default class SignUp extends Component {
       .post("/users/signup", this.state)
       .then(res => {
         if (res.status === 201) {
-          const data = {
-            _id: res.data.user._id,
-            username: res.data.user.username,
-            token: res.data.token
-          };
-
-          localStorage.setItem("user", JSON.stringify(data));
-          this.props.history.push(`/dashboard/${data._id}`);
+          this.props.history.push("/dashboard");
         }
       })
       .catch(err => console.log("error"));
