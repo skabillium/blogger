@@ -1,16 +1,30 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import axios from "axios";
+
 import PostSummary from "./PostSummary";
 
 class PostList extends Component {
-  state = {
-    posts: [
-      { id: 1, title: "post 1", content: "content1" },
-      { id: 2, title: "post 2", content: "content2" },
-      { id: 3, title: "post 3", content: "content3" }
-    ]
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: props.user,
+      posts: []
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get(`/posts/${this.state.user}`)
+      .then(res => {
+        this.setState({
+          posts: res.data
+        });
+        console.log(this.state);
+      })
+      .catch(err => console.log(err));
+  }
 
   render() {
     return (
@@ -21,7 +35,7 @@ class PostList extends Component {
           this.state.posts.map(post => {
             return (
               <Link to={"/post/" + post.id}>
-                <PostSummary post={post} key={post.id} />
+                <PostSummary post={post} key={post._id} />
               </Link>
             );
           })}
