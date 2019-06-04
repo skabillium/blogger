@@ -39,7 +39,7 @@ export const signup = async (req, res, next) => {
             newUser
               .save()
               .then(result => {
-                res.cookie("token", token, { httpOnly: true });
+                res.cookie("token", token, { httpOnly: false });
                 res.cookie("user", result._id, { httpOnly: false });
                 res.status(201).json({ _id: result._id });
               })
@@ -82,7 +82,7 @@ export const login = async (req, res, next) => {
           { expiresIn: "1d" }
         );
 
-        res.cookie("token", token, { httpOnly: true });
+        res.cookie("token", token, { httpOnly: false });
         res.cookie("user", user[0]._id, { httpOnly: false });
         res.status(200).json({ _id: user[0]._id });
       }
