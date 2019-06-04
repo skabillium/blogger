@@ -40,6 +40,7 @@ export const signup = async (req, res, next) => {
               .save()
               .then(result => {
                 res.cookie("token", token, { httpOnly: true });
+                res.cookie("user", result._id, { httpOnly: true });
                 res.status(201).json({ _id: result._id });
               })
               .catch(err => {
@@ -82,6 +83,7 @@ export const login = async (req, res, next) => {
         );
 
         res.cookie("token", token, { httpOnly: true });
+        res.cookie("user", user._id, { httpOnly: true });
         res.status(200).json({ _id: user[0]._id });
       }
     });
