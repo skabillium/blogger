@@ -16,7 +16,7 @@ class PostList extends Component {
 
   componentDidMount() {
     axios
-      .get(`/posts/${this.state.user}`)
+      .get(`/posts/get_by_user/${this.state.user}`)
       .then(res => {
         this.setState({
           posts: res.data
@@ -34,7 +34,7 @@ class PostList extends Component {
         {this.state.posts &&
           this.state.posts.map(post => {
             return (
-              <Link to={"/post/" + post.id}>
+              <Link to={"/post/" + post._id}>
                 <PostSummary post={post} key={post._id} />
               </Link>
             );
