@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import userRoutes from "./routes/users";
 import postRoutes from "./routes/posts";
 import authRoutes from "./routes/auth";
+import searchRoutes from "./routes/search";
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use(cors());
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 app.use("/checkAuth", authRoutes);
+app.use("/search", searchRoutes);
 
 // If request doesn't get handled by the routers above
 // throw error
