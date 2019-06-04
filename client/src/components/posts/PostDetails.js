@@ -27,8 +27,6 @@ class PostDetails extends Component {
       .catch(err => console.log(err));
   }
 
-  compo;
-
   render() {
     if (this.state.title) {
       return (

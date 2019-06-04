@@ -15,17 +15,6 @@ export default class SignUp extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  // componentWillMount() {
-  //   axios
-  //     .get("/checkAuth")
-  //     .then(res => {
-  //       if (res.status === 200) {
-  //         this.props.history.push(`/dashboard/${res.data._id}`);
-  //       }
-  //     })
-  //     .catch();
-  // }
-
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value
