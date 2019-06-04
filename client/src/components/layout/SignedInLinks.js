@@ -1,18 +1,21 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
+import Cookies from "js-cookie";
 
-function SignedInLinks() {
+function SignedInLinks(props) {
+  const user_id = Cookies.get("user").split('"')[1];
+
   return (
     <ul className="navbar-nav mr-auto">
       <li className="nav-item">
-        <Link to="/signin">
+        <Link to={`/create-post/${user_id}`}>
           <div className="nav-link">Create Post</div>
         </Link>
       </li>
       <li className="nav-item">
-        <Link to="/signup">
-          <div className="nav-link">Log Out</div>
-        </Link>
+        <div className="nav-link" onClick={() => props.onLogout()}>
+          Log out
+        </div>
       </li>
     </ul>
   );

@@ -1,41 +1,67 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import Cookies from "js-cookie";
 
 import Searchbar from "./Searchbar";
 import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
 
-function Navbar() {
-  //   let links;
-  //   if () {
-  //     links = SignedInLinks;
-  //   } else {
-  //     links = SignedOutLinks;
-  //   }
+class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    if (Cookies.get("user")) {
+      this.state = {
+        user_id: Cookies.get("user").split('"')[1]
+      };
+    } else {
+      this.state = {
+        user_id: false
+      };
+    }
 
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a className="navbar-brand" href="#">
-        Navbar
-      </a>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarColor01"
-        aria-controls="navbarColor01"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon" />
-      </button>
-      <div className="collapse navbar-collapse" id="navbarColor01">
-        {Cookies.get("user") ? <SignedInLinks /> : <SignedOutLinks />}
-        <Searchbar />
-      </div>
-    </nav>
-  );
+    this.onLogout = this.onLogout.bind(this);
+  }
+
+  onLogout() {
+    Cookies.remove("token");
+    Cookies.remove("user");
+    this.props.history.push("/");
+  }
+
+  render() {
+    return (
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        {this.state.user_id ? (
+          <Link to={`/dashboard/${this.state.user_id}`}>
+            <div className="navbar-brand">Blogger</div>
+          </Link>
+        ) : (
+          <Link to={`/signin`}>
+            <div className="navbar-brand">Blogger</div>
+          </Link>
+        )}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarColor01"
+          aria-controls="navbarColor01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon" />
+        </button>
+        <div className="collapse navbar-collapse" id="navbarColor01">
+          {Cookies.get("user") ? (
+            <SignedInLinks onLogout={this.onLogout} />
+          ) : (
+            <SignedOutLinks />
+          )}
+          <Searchbar />
+        </div>
+      </nav>
+    );
+  }
 }
 
 export default withRouter(Navbar);
