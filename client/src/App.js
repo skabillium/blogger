@@ -7,6 +7,7 @@ import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import CreatePost from "./components/posts/CreatePost";
 import EditPost from "./components/posts/EditPost";
+import Navbar from "./components/layout/Navbar";
 
 import CheckAuth from "./components/auth/CheckAuth";
 import WithAuth from "./components/hoc/WithAuth";
@@ -19,6 +20,9 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
+          <Navbar />
+          <br />
+          <br />
           <Switch>
             <Route exact path="/" component={CheckAuth} />
             <Route path="/dashboard" component={WithAuth(Dashboard)} />
