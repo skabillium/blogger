@@ -4,8 +4,12 @@
   "description": "A blogging website created to get familiar with the mern stack",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node server.js",
-    "clear-db": "babel-node clear-database.js"
+    "start": "nodemon build/server.js",
+    "prestart": "npm run build",
+    "dev": "nodemon --exec babel-node src/server.js",
+    "build": "npm run clean && npm run build-server",
+    "build-server": "babel -d ./build ./src -s",
+    "clean": "rm -rf build && mkdir build"
   },
   "author": "skabi",
   "license": "ISC",
