@@ -31,12 +31,25 @@ class CreatePost extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <label htmlFor="title">Title</label>
-        <input type="text" name="title" onChange={this.onChange} />
-        <label htmlFor="content">Content</label>
-        <input type="text" name="content" onChange={this.onChange} />
-        <input type="submit" value="Submit" />
+      <form className="form" onSubmit={this.onSubmit}>
+        <div className="form-group">
+          <label htmlFor="title">Title</label>
+          <div className="col-sm-10">
+            <input type="text" name="title" onChange={this.onChange} />
+          </div>
+        </div>
+        <div className="form-group">
+          <label htmlFor="content">Content</label>
+          <div className="col-sm-10">
+            <textarea
+              name="content"
+              className="form-control"
+              rows="3"
+              onChange={this.onChange}
+            />
+          </div>
+        </div>
+        <input type="submit" className="btn btn-primary" value="Submit" />
       </form>
     );
   }

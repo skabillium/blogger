@@ -34,7 +34,7 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form">
         <h3>Sign In</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">

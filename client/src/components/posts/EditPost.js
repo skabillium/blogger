@@ -51,21 +51,29 @@ class EditPost extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <label htmlFor="title">Title</label>
-        <input
-          type="text"
-          name="title"
-          onChange={this.onChange}
-          defaultValue={this.state.title}
-        />
-        <label htmlFor="content">Content</label>
-        <input
-          type="text"
-          name="content"
-          onChange={this.onChange}
-          defaultValue={this.state.content}
-        />
+      <form className="form" onSubmit={this.onSubmit}>
+        <div className="form-group">
+          <label htmlFor="title">Title</label>
+          <div className="col-sm-10">
+            <input
+              type="text"
+              name="title"
+              onChange={this.onChange}
+              defaultValue={this.state.title}
+            />
+          </div>
+        </div>
+        <div className="form-group">
+          <label htmlFor="content">Content</label>
+          <div className="col-sm-10">
+            <textarea
+              name="content"
+              onChange={this.onChange}
+              rows="3"
+              defaultValue={this.state.content}
+            />
+          </div>
+        </div>
         <input type="submit" value="Submit" />
       </form>
     );

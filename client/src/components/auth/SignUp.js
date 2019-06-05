@@ -35,7 +35,7 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form">
         <legend>Sign up</legend>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
