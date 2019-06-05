@@ -6,15 +6,12 @@
   cursor: pointer;
 }
 
-.navbar {
-  max-height: 80px;
+.dashboard {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }
 
-.search-bar {
-  position: sticky;
-  z-index: 1;
-}
-
-.search-result {
-  position: absolute;
+.list-group {
+  padding-top: 8px;
 }

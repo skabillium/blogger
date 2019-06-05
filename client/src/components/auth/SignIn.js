@@ -35,13 +35,21 @@ class SignIn extends Component {
   render() {
     return (
       <div>
-        <h1>Sign In</h1>
+        <h3>Sign In</h3>
         <form onSubmit={this.onSubmit}>
-          <label htmlFor="username">Username</label>
-          <input type="text" name="username" onChange={this.onChange} />
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" onChange={this.onChange} />
-          <input type="submit" value="Submit" />
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <div className="col-sm-10">
+              <input type="text" name="username" onChange={this.onChange} />
+            </div>
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <div className="col-sm-10">
+              <input type="password" name="password" onChange={this.onChange} />
+            </div>
+          </div>
+          <input type="submit" className="btn btn-primary" value="Submit" />
         </form>
         <Link to={"/"}>Sign up</Link>
       </div>

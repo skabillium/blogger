@@ -28,8 +28,6 @@ class PostList extends Component {
   render() {
     return (
       <div className="post-list">
-        <h1>PostList</h1>
-
         {this.state.posts &&
           this.state.posts.map(post => {
             return (

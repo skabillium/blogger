@@ -48,8 +48,9 @@ class SearchPage extends Component {
 
     return (
       <div>
-        <h1>Search Page</h1>
-        {display}
+        <h3>Search Results</h3>
+        <br />
+        <div className="list-group">{display}</div>
       </div>
     );
   }

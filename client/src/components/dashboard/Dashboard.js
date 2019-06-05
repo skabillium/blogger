@@ -7,7 +7,9 @@ class Dashboard extends Component {
     const user = this.props.location.pathname.split("/")[2];
 
     return (
-      <div>
+      <div className="dashboard">
+        <h3>Dashboard</h3>
+        <br />
         <PostList user={user} />
       </div>
     );

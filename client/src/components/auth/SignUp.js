@@ -36,15 +36,27 @@ export default class SignUp extends Component {
   render() {
     return (
       <div>
-        <h1>Sign up</h1>
+        <legend>Sign up</legend>
         <form onSubmit={this.onSubmit}>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" onChange={this.onChange} />
-          <label htmlFor="username">Username</label>
-          <input type="text" name="username" onChange={this.onChange} />
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" onChange={this.onChange} />
-          <input type="submit" value="Submit" />
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <div className="col-sm-10">
+              <input type="email" name="email" onChange={this.onChange} />
+            </div>
+          </div>
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <div className="col-sm-10">
+              <input type="text" name="username" onChange={this.onChange} />
+            </div>
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <div className="col-sm-10">
+              <input type="password" name="password" onChange={this.onChange} />
+            </div>
+          </div>
+          <input type="submit" className="btn btn-primary" value="Submit" />
         </form>
         <Link to={"/signin"}>Sign in</Link>
       </div>
