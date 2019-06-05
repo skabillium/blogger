@@ -66,15 +66,12 @@ class EditPost extends Component {
         <div className="form-group">
           <label htmlFor="content">Content</label>
           <div className="col-sm-10">
-            <textarea
-              name="content"
-              onChange={this.onChange}
-              rows="3"
-              defaultValue={this.state.content}
-            />
+            <textarea name="content" onChange={this.onChange} rows="3">
+              {this.state.content}
+            </textarea>
           </div>
         </div>
-        <input type="submit" value="Submit" />
+        <input type="submit" className="btn btn-primary" value="Submit" />
       </form>
     );
   }

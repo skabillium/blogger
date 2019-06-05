@@ -15,6 +15,11 @@ router.get("/get_by_user/:user_id", checkAuth, postController.get_by_user);
 
 router.patch("/:post_id", checkAuth, validateUser, postController.update_post);
 
-router.delete("/:post_id", checkAuth, validateUser, postController.delete_post);
+router.delete(
+  "/:post_id/:user_id",
+  checkAuth,
+  validateUser,
+  postController.delete_post
+);
 
 export default router;

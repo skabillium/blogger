@@ -28,9 +28,11 @@ export default class SignUp extends Component {
       .then(res => {
         if (res.status === 201) {
           this.props.history.push(`/dashboard/${res.data._id}`);
+        } else {
+          throw new Error("something wrong");
         }
       })
-      .catch(err => console.log("error"));
+      .catch(err => console.log(err));
   }
 
   render() {
