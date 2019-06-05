@@ -7,8 +7,8 @@ export const search = async (req, res, next) => {
 
   try {
     const result = await User.find(query).exec();
-    return res.status(200).json(result);
+    res.status(200).json(result);
   } catch (err) {
-    return res.status(500).json(err);
+    res.status(500).json(err);
   }
 };

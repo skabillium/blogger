@@ -5,3 +5,16 @@
 .nav-item {
   cursor: pointer;
 }
+
+.navbar {
+  max-height: 80px;
+}
+
+.search-bar {
+  position: sticky;
+  z-index: 1;
+}
+
+.search-result {
+  position: absolute;
+}

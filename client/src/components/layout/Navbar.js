@@ -20,12 +20,17 @@ class Navbar extends Component {
     }
 
     this.onLogout = this.onLogout.bind(this);
+    this.submitSearch = this.submitSearch.bind(this);
   }
 
   onLogout() {
     Cookies.remove("token");
     Cookies.remove("user");
     this.props.history.push("/");
+  }
+
+  submitSearch(phrase) {
+    this.props.history.push(`/search/${phrase}`);
   }
 
   render() {
@@ -57,7 +62,7 @@ class Navbar extends Component {
           ) : (
             <SignedOutLinks />
           )}
-          <Searchbar />
+          <Searchbar submitSearch={this.submitSearch} />
         </div>
       </nav>
     );

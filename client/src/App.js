@@ -8,6 +8,7 @@ import SignUp from "./components/auth/SignUp";
 import CreatePost from "./components/posts/CreatePost";
 import EditPost from "./components/posts/EditPost";
 import Navbar from "./components/layout/Navbar";
+import SearchPage from "./components/search/SearchPage";
 
 import CheckAuth from "./components/auth/CheckAuth";
 import WithAuth from "./components/hoc/WithAuth";
@@ -28,12 +29,13 @@ class App extends Component {
             <Route path="/dashboard" component={WithAuth(Dashboard)} />
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
-            <Route path="/post/:id" component={PostDetails} />
+            <Route path="/post/:id" component={WithAuth(PostDetails)} />
             <Route
               path="/create-post/:user_id"
               component={WithAuth(CreatePost)}
             />
             <Route path="/edit-post/:post_id" component={WithAuth(EditPost)} />
+            <Route path="/search/:term" component={SearchPage} />
           </Switch>
         </div>
       </BrowserRouter>
